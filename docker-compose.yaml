@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  master:
+    image: jenkins/jenkins:lts
+    environment:
+      - JAVA_OPTS=-Dhudson.footerURL=https://infobip.com
+      - JENKINS_SLAVE_AGENT_PORT=50001
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    ports:
+    - '8080:8080'
+    - '50000:50000'
+    networks:
+      - frontend
+      - backend
+  slave:
+    image: jenkins/jnlp-slave:latest
+    environment:
+      - JENKINS_URL=http://master:50000
+      - JENKINS_SECRET=
+      - JENKINS_AGENT_NAME=slave
+    networks:
+      - backend
+    deploy:
+networks:
+  frontend:
+  backend:
+volumes:
+  jenkins_home:
+
