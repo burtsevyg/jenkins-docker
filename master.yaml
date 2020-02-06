@@ -13,15 +13,6 @@ services:
     networks:
       - frontend
       - backend
-  slave:
-    image: jenkins/jnlp-slave:latest
-    environment:
-      - JENKINS_URL=http://master:8080
-      - JENKINS_SECRET=""
-      - JENKINS_AGENT_NAME=slave
-    networks:
-      - backend
-    deploy:
 networks:
   frontend:
   backend:

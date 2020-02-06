@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  slave:
+    image: jenkins/jnlp-slave:latest
+    environment:
+      - JENKINS_URL=http://master:8080
+      - JENKINS_SECRET=${SLAVE_JNLP_MAC}
+      - JENKINS_AGENT_NAME=slave
+    networks:
+      - backend
+    deploy:
+

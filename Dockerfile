@@ -9,3 +9,4 @@ ENV JENKINS_USER $JENKINS_USER
 ENV JENKINS_PASS $JENKINS_PASS
 
 COPY CreateAdminUser.groovy /usr/share/jenkins/ref/init.groovy.d/
+COPY CreateJnlpSlave.groovy /usr/share/jenkins/ref/init.groovy.d/
